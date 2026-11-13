@@ -169,6 +169,8 @@ ol.rank li { display: flex; justify-content: space-between; gap: 8px; border-bot
 .wx { display: inline-flex; gap: 4px; align-items: center; white-space: nowrap; font: 600 .7rem var(--f-data); letter-spacing: .04em; }
 .wx b { padding: 1px 6px; border-radius: 3px; color: #fff; font-weight: 600; }
 .wx-VFR b { background: var(--vfr); } .wx-MVFR b { background: var(--mvfr); } .wx-IFR b { background: var(--ifr); } .wx-LIFR b { background: var(--lifr); }
+.wxrow { display: flex; flex-wrap: wrap; gap: 4px; min-height: 18px; }
+.wxrow .wx { flex-wrap: wrap; white-space: normal; }
 .wx i { font-style: normal; color: var(--muted); font-weight: 400; }
 /* folding sections */
 .ai { display: grid; gap: 14px; border-left: 4px solid var(--base); }
@@ -447,7 +449,8 @@ function renderDetail() {
     const k = w.days[d], m = k && DATA.days[k], b = base(w.season, d);
     const manual = m?.counts?.manual?.total;
     return `<div class="day ${["Fri","Sat"].includes(d) ? "focus" : ""}">
-      <span class="eyebrow" style="display:flex;justify-content:space-between;gap:6px">${d} ${k ? fmtDate(k) : ""}${k ? wxPill(k) : ""}</span>
+      <span class="eyebrow">${d} ${k ? fmtDate(k) : ""}</span>
+      ${k && WX[k] ? `<span class="wxrow">${wxPill(k)}</span>` : ""}
       <span class="n">${m && m.has_data ? G(m).itinerant : '<span class="nodata">–</span>'}</span>
       <span class="b">${m && m.has_data ? `${G(m).arrivals} arr · ${G(m).departures} dep` : (k ? "not fetched yet" : "upcoming")}</span>
       <span class="b">${m && m.has_data ? `+ ${G(m).local} local/pattern` : ""}</span>
