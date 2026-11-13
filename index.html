@@ -152,7 +152,7 @@ ol.rank li { display: flex; justify-content: space-between; gap: 8px; border-bot
   padding: 6px 12px; border-radius: 999px; background: var(--accent-soft); color: var(--ink); border: 1px solid var(--accent); }
 .verdict.calm { background: transparent; border-color: var(--line); }
 .hero .lede { font-size: 1.1rem; max-width: 62ch; margin: 0; }
-.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)); gap: 10px; }
 .fact { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; display: grid; gap: 2px; align-content: start; }
 .fact .v { font: 600 1.6rem var(--f-data); font-variant-numeric: tabular-nums; }
 .fact .s { font-size: .8rem; color: var(--muted); }
@@ -161,7 +161,7 @@ ol.rank li { display: flex; justify-content: space-between; gap: 8px; border-bot
 /* live */
 .live { display: grid; gap: 14px; border-top: 4px solid var(--good); }
 .livebadge { font: 600 .75rem var(--f-data); letter-spacing: .08em; text-transform: uppercase; color: #fff; background: var(--good);
-  padding: 3px 8px; border-radius: 999px; animation: pulse 2s ease-in-out infinite; }
+  padding: 3px 8px; border-radius: 999px; white-space: nowrap; animation: pulse 2s ease-in-out infinite; }
 @keyframes pulse { 50% { opacity: .55; } }
 @media (prefers-reduced-motion: reduce) { .livebadge { animation: none; } }
 .live table td, .live table th { padding: 5px 8px; }
