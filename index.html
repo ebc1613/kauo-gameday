@@ -318,7 +318,9 @@ function renderStrip() {
   const ratios = homes.map(delta).filter(x => x != null);
   const avgUp = ratios.length ? ratios.reduce((a, b) => a + b, 0) / ratios.length : null;
   let best = null;
-  for (const w of homes) { const v = (dayVal(w, "Fri") || 0) + (dayVal(w, "Sat") || 0); if (!best || v > best.v) best = { w, v }; }
+  // Busiest weekend is always judged on visitors: with "all traffic" a big flight-school weekend would win
+  const vis = (w, d) => { const k = w.days[d], m = k && DATA.days[k]; return m && m.has_data ? m.groups.visitors.itinerant : 0; };
+  for (const w of homes) { const v = vis(w, "Fri") + vis(w, "Sat"); if (!best || v > best.v) best = { w, v }; }
   const covered = Object.values(DATA.days).filter(d => d.total > 0).length;
   const next = DATA.upcoming[0];
   const sameOpp = next ? homes.filter(w => w.game.opponent === next.opponent) : [];
@@ -329,9 +331,9 @@ function renderStrip() {
       <span class="s">Average change in Fri + Sat arrivals and departures across ${ratios.length} measured home weekends</span>
     </div>
     <div class="panel stat">
-      <span class="eyebrow">Busiest home weekend</span>
+      <span class="eyebrow">Busiest home weekend (visitors)</span>
       <span class="v">${best ? best.v : "—"}</span>
-      <span class="s">${best ? `${esc(best.w.game.label)} · Fri + Sat arrivals + departures` : "No data loaded yet"}</span>
+      <span class="s">${best ? `${esc(best.w.game.label)} · visiting Fri + Sat arrivals and departures` : "No data loaded yet"}</span>
     </div>
     <div class="panel stat">
       <span class="eyebrow">Days with data</span>
