@@ -1,1 +1,1 @@
-{"updated":"2026-11-22T23:06:19.225295+00:00","date":"2026-11-22","inbound_count":0,"near_count":0,"total_50nm":21,"landed_last_hour":0,"inbound":[],"history":[{"t":"11:51","near":4},{"t":"17:06","near":0}],"landed":[],"state":{}}
+{"updated":"2026-11-23T03:41:32.870597+00:00","date":"2026-11-22","inbound_count":0,"near_count":0,"total_50nm":9,"landed_last_hour":0,"inbound":[],"history":[{"t":"11:51","near":4},{"t":"17:06","near":0},{"t":"21:41","near":0}],"landed":[],"state":{"cfa4d8c990":{"d":11.5,"agl":36223,"gnd":false}}}
